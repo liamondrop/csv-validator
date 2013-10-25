@@ -18,14 +18,14 @@ while ($row = $reader->readRow()) {
 $csv = new ArrayObject($csv);
 $csv = $csv->getIterator();
 
-// save a list of valid clip ids
+// write a list of valid clip ids
 $valid = new ClipValidator($csv, $returnValid = true);
 $validFile = new CSVWriter('valid.csv');
 foreach ($valid as $v) {
     $validFile->writeRow($v, 'id');
 }
 
-// save a list of invalid clip ids
+// write a list of invalid clip ids
 $invalid = new ClipValidator($csv, $returnValid = false);
 $invalidFile = new CSVWriter('invalid.csv');
 foreach ($invalid as $i) {
